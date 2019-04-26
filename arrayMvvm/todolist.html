@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.8/dist/vue.js"></script>
+    <style>
+        .isFinished {
+            text-decoration: line-through
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" @keyup.enter='add' v-model='newItem'>
+        <li v-for='list in lists' :class='{isFinished: list.isFinished}' @click='change(list)'>{{list.label}}</li>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                lists: [{
+                    label: 'read book',
+                    isFinished: true
+                },
+                {
+                    label: 'eat book',
+                    isFinished: false
+                }
+                ],
+                newItem: ''
+            },
+            methods: {
+                change: function (item) {
+                    item.isFinished = !item.isFinished
+                },
+                add() {
+                    console.log(this.newItem)
+                    this.lists.push({
+                        label: this.newItem,
+                        isFinished: false
+                    })
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

@@ -90,3 +90,4 @@ console.log(obj)       //  arr = [1,2,3,1]
 obj.arr = []            // 数组改变了位置[arr]的值改变了
 obj.arr[0] = 1           // 没有调用setter，所以没有输出
 console.log(obj)        //arr = [1]
+
